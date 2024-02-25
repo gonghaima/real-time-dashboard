@@ -4,16 +4,17 @@ import { useGetIdentity } from "@refinedev/core";
 
 import { SettingOutlined } from "@ant-design/icons";
 import { Button, Popover } from "antd";
+// import { User } from '../../../graphql/schema.types';
 
-// import type { User } from "@/graphql/schema.types";
+import type { User } from "@/graphql/schema.types";
+import { CustomAvatar } from '@/components/custom-avatar';
 
-// import { CustomAvatar } from "../../custom-avatar";
 // import { Text } from "../../text";
 // import { AccountSettings } from "../account-settings";
 
 export const CurrentUser = () => {
   const [opened, setOpened] = React.useState(false);
-//   const { data: user } = useGetIdentity<User>();
+  const { data: user } = useGetIdentity<User>();
 
   const content = (
     <div
@@ -61,12 +62,12 @@ export const CurrentUser = () => {
         overlayInnerStyle={{ padding: 0 }}
         overlayStyle={{ zIndex: 999 }}
       > CustomAvatar
-        {/* <CustomAvatar
+        <CustomAvatar
           name={user?.name}
           src={user?.avatarUrl}
           size="default"
           style={{ cursor: "pointer" }}
-        /> */}
+        />
       </Popover>
       {/* {user && (
         <AccountSettings
