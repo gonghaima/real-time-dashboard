@@ -1,15 +1,15 @@
-import React from "react";
+import React from 'react';
 
-import { useGetIdentity } from "@refinedev/core";
+import { useGetIdentity } from '@refinedev/core';
 
-import { SettingOutlined } from "@ant-design/icons";
-import { Button, Popover } from "antd";
+import { SettingOutlined } from '@ant-design/icons';
+import { Button, Popover } from 'antd';
 // import { User } from '../../../graphql/schema.types';
 
-import type { User } from "@/graphql/schema.types";
+import type { User } from '@/graphql/schema.types';
 import { CustomAvatar } from '@/components/custom-avatar';
 
-// import { Text } from "../../text";
+import { Text } from '../../text';
 // import { AccountSettings } from "../account-settings";
 
 export const CurrentUser = () => {
@@ -19,29 +19,30 @@ export const CurrentUser = () => {
   const content = (
     <div
       style={{
-        display: "flex",
-        flexDirection: "column",
+        display: 'flex',
+        flexDirection: 'column',
       }}
     >
-      {/* <Text
+      <Text
         strong
         style={{
-          padding: "12px 20px",
+          padding: '12px 20px',
         }}
       >
         {user?.name}
-      </Text> */}
+      </Text>
+
       <div
         style={{
-          borderTop: "1px solid #d9d9d9",
-          padding: "4px",
-          display: "flex",
-          flexDirection: "column",
-          gap: "4px",
+          borderTop: '1px solid #d9d9d9',
+          padding: '4px',
+          display: 'flex',
+          flexDirection: 'column',
+          gap: '4px',
         }}
       >
         <Button
-          style={{ textAlign: "left" }}
+          style={{ textAlign: 'left' }}
           icon={<SettingOutlined />}
           type="text"
           block
@@ -61,7 +62,7 @@ export const CurrentUser = () => {
         trigger="click"
         overlayInnerStyle={{ padding: 0 }}
         overlayStyle={{ zIndex: 999 }}
-      > CustomAvatar
+      >
         <CustomAvatar
           name={user?.name}
           src={user?.avatarUrl}
