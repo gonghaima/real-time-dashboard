@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import dayjs from 'dayjs';
 import { CalendarOutlined } from '@ant-design/icons';
 import { Badge, Card, List, Skeleton } from 'antd';
 import { Text } from '../text';
@@ -69,6 +70,34 @@ const UpcomingEvents = (props: Props) => {
       ) : (
         <List
           itemLayout="horizontal"
+          dataSource={[]}
+          renderItem={(item) => {
+            const renderDate = () => {
+              const start = dayjs(item.startDate).format(
+                'MMM DD, YYYY - HH:mm'
+              );
+              const end = dayjs(item.endDate).format('MMM DD, YYYY - HH:mm');
+
+              return `${start} - ${end}`;
+            };
+
+            return (
+              <List.Item>
+                <List.Item.Meta
+                  avatar={<Badge color={item.color} />}
+                  title={<Text size="xs">{`${renderDate()}`}</Text>}
+                  description={
+                    <Text ellipsis={{ tooltip: true }} strong>
+                      {item.title}
+                    </Text>
+                  }
+                />
+              </List.Item>
+            );
+          }}
+        />
+        // <List
+        //   itemLayout="horizontal"
         //   dataSource={data?.data || []}
         //   renderItem={(item) => {
         //     const renderDate = () => {
@@ -94,7 +123,7 @@ const UpcomingEvents = (props: Props) => {
         //       </List.Item>
         //     );
         //   }}
-        />
+        // />
       )}
 
       {/* {!isLoading && data?.data.length === 0 && <NoEvent />} */}
