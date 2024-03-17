@@ -1,19 +1,19 @@
-import React from "react";
+import React from 'react';
 
-import { ConfigProvider, Typography } from "antd";
+import { ConfigProvider, Typography } from 'antd';
 
 export type TextProps = {
   size?:
-    | "xs"
-    | "sm"
-    | "md"
-    | "lg"
-    | "xl"
-    | "xxl"
-    | "xxxl"
-    | "huge"
-    | "xhuge"
-    | "xxhuge";
+    | 'xs'
+    | 'sm'
+    | 'md'
+    | 'lg'
+    | 'xl'
+    | 'xxl'
+    | 'xxxl'
+    | 'huge'
+    | 'xhuge'
+    | 'xxhuge';
 } & React.ComponentProps<typeof Typography.Text>;
 
 const sizes = {
@@ -59,7 +59,7 @@ const sizes = {
   },
 };
 
-export const Text = ({ size = "sm", children, ...rest }: TextProps) => {
+export const Text = ({ size = 'sm', items, ...rest }: TextProps) => {
   return (
     <ConfigProvider
       theme={{
@@ -68,7 +68,7 @@ export const Text = ({ size = "sm", children, ...rest }: TextProps) => {
         },
       }}
     >
-      <Typography.Text {...rest}>{children}</Typography.Text>
+      <Typography.Text {...rest}>{items}</Typography.Text>
     </ConfigProvider>
   );
 };

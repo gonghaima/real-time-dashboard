@@ -3,12 +3,21 @@ import dayjs from 'dayjs';
 import { CalendarOutlined } from '@ant-design/icons';
 import { Badge, Card, List, Skeleton } from 'antd';
 import { Text } from '../text';
+import { useList } from '@refinedev/core';
+import { DASHBORAD_CALENDAR_UPCOMING_EVENTS_QUERY } from '@/graphql/queries';
 
 type Props = {};
 
 const UpcomingEvents = (props: Props) => {
   const [isLoading, setLoading] = useState(false);
+  const { data, isLoading: eventsLoading } = useList({
+    resource: 'events',
+    meta: {
+      gqlQuery:DASHBORAD_CALENDAR_UPCOMING_EVENTS_QUERY
+    }
+  });
 
+  console.log("🚀 ~ UpcomingEvents ~ data:", data)
   return (
     <Card
       style={{
