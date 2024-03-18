@@ -79,7 +79,7 @@ const UpcomingEvents = (props: Props) => {
       ) : (
         <List
           itemLayout="horizontal"
-          dataSource={[]}
+          dataSource={data?.data || []}
           renderItem={(item) => {
             const renderDate = () => {
               const start = dayjs(item.startDate).format(
