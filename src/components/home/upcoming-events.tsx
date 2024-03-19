@@ -12,6 +12,15 @@ const UpcomingEvents = (props: Props) => {
   const [isLoading, setLoading] = useState(false);
   const { data, isLoading: eventsLoading } = useList({
     resource: 'events',
+    pagination: {pageSize: 5},
+    sorters: [{ field: 'startDate', order: 'asc' }],
+    filters: [
+      {
+        field: 'startDate',
+        operator: 'gte',
+        value: dayjs().format('YYYY-MM-DD'),
+      },
+    ],
     meta: {
       gqlQuery:DASHBORAD_CALENDAR_UPCOMING_EVENTS_QUERY
     }
