@@ -1,4 +1,3 @@
-import React, { useState } from 'react';
 import dayjs from 'dayjs';
 import { CalendarOutlined } from '@ant-design/icons';
 import { Badge, Card, List, Skeleton } from 'antd';
@@ -9,8 +8,7 @@ import { DASHBORAD_CALENDAR_UPCOMING_EVENTS_QUERY } from '@/graphql/queries';
 type Props = {};
 
 const UpcomingEvents = (props: Props) => {
-  const [isLoading, setLoading] = useState(false);
-  const { data, isLoading: eventsLoading } = useList({
+  const { data, isLoading } = useList({
     resource: 'events',
     pagination: {pageSize: 5},
     sorters: [{ field: 'startDate', order: 'asc' }],
@@ -114,37 +112,17 @@ const UpcomingEvents = (props: Props) => {
             );
           }}
         />
-        // <List
-        //   itemLayout="horizontal"
-        //   dataSource={data?.data || []}
-        //   renderItem={(item) => {
-        //     const renderDate = () => {
-        //       const start = dayjs(item.startDate).format(
-        //         'MMM DD, YYYY - HH:mm'
-        //       );
-        //       const end = dayjs(item.endDate).format('MMM DD, YYYY - HH:mm');
-
-        //       return `${start} - ${end}`;
-        //     };
-
-        //     return (
-        //       <List.Item>
-        //         <List.Item.Meta
-        //           avatar={<Badge color={item.color} />}
-        //           title={<Text size="xs">{`${renderDate()}`}</Text>}
-        //           description={
-        //             <Text ellipsis={{ tooltip: true }} strong>
-        //               {item.title}
-        //             </Text>
-        //           }
-        //         />
-        //       </List.Item>
-        //     );
-        //   }}
-        // />
+        
       )}
 
-      {/* {!isLoading && data?.data.length === 0 && <NoEvent />} */}
+    {!isLoading && data?.data.length === 0 && (
+            <span style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+              height: '220px',
+            }}>No upcoming events</span>
+          )}
     </Card>
   );
 };
