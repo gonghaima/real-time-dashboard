@@ -1,4 +1,4 @@
-import { DealsChart, UpcomingEvents } from '@/components';
+import { DealsChart, UpcomingEvents, LatestActivities } from '@/components';
 import {Col, Row} from 'antd';
 import DashboardTotalCountCard from '@/components/home/total-count-card';
 import { useCustom } from '@refinedev/core';
@@ -76,6 +76,11 @@ export const Home = () => {
         }}  
         >
           <DealsChart />
+        </Col>
+      </Row>
+      <Row gutter={[32,32]} style={{marginTop: '32px'}}>
+        <Col xs={24}>
+        <LatestActivities/>
         </Col>
       </Row>
     </div>
